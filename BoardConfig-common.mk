@@ -96,7 +96,6 @@ AB_OTA_PARTITIONS += \
     dtbo \
     product \
     system_ext \
-    vbmeta_system \
     vendor
 
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -111,13 +110,6 @@ TARGET_RECOVERY_UI_LIB := \
 
 # Verified Boot
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
-
-# Enable chain partition for system.
-BOARD_AVB_VBMETA_SYSTEM := system system_ext product
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
 
 # product.img
 BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
