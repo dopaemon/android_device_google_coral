@@ -25,6 +25,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/pixys_flame.mk \
     $(LOCAL_DIR)/lineage_coral.mk \
     $(LOCAL_DIR)/lineage_flame.mk \
+    $(LOCAL_DIR)/octavi_coral.mk \
+    $(LOCAL_DIR)/octavi_flame.mk \
     $(LOCAL_DIR)/aosp_coral_hwasan.mk \
     $(LOCAL_DIR)/aosp_flame_hwasan.mk
 
@@ -32,4 +34,6 @@ COMMON_LUNCH_CHOICES := \
     pixys_coral-userdebug \
     pixys_flame-userdebug \
     lineage_coral-userdebug \
-    lineage_flame-userdebug
+    lineage_flame-userdebug \
+    octavi_coral-userdebug \
+    octavi_flame-userdebug
