@@ -58,8 +58,8 @@ RISING_MAINTAINER := KernelPanix
 RISING_CHIPSET := "SDM855"
 TARGET_ENABLE_BLUR := true
 WITH_GMS := true
-TARGET_CORE_GMS := true
-TARGET_CORE_GMS_EXTRAS := true
+# TARGET_CORE_GMS := true
+# TARGET_CORE_GMS_EXTRAS := true
 TARGET_USE_GOOGLE_TELEPHONY := true
 
 $(call inherit-product, device/google/coral/device-flame.mk)

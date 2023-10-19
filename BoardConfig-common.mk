@@ -17,6 +17,8 @@
 include build/make/target/board/BoardConfigMainlineCommon.mk
 include build/make/target/board/BoardConfigPixelCommon.mk
 
+DEVICE_PATH := device/google/coral
+
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
@@ -41,18 +43,24 @@ TARGET_2ND_CPU_VARIANT := cortex-a76
 TARGET_BOARD_COMMON_PATH := device/google/coral/sm8150
 
 # Kernel
+TARGET_KERNEL_DIR := $(DEVICE_PATH)/kernel
 BOARD_KERNEL_IMAGE_NAME := Image.lz4
-TARGET_COMPILE_WITH_MSM_KERNEL := true
+# TARGET_COMPILE_WITH_MSM_KERNEL := true
 TARGET_BUILD_TOOLS := tools-lineage
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
     DTC=$(shell pwd)/prebuilts/$(TARGET_BUILD_TOOLS)/$(HOST_OS)-x86/dtc/dtc \
     MKDTIMG=$(shell pwd)/prebuilts/$(TARGET_BUILD_TOOLS)/$(HOST_OS)-x86/libufdt/mkdtimg
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CLANG_COMPILE := true
-KERNEL_SUPPORTS_LLVM_TOOLS := true
-TARGET_KERNEL_CONFIG := floral_defconfig
-TARGET_KERNEL_SOURCE := kernel/google/msm-4.14
+# TARGET_KERNEL_CLANG_COMPILE := true
+# KERNEL_SUPPORTS_LLVM_TOOLS := true
+# TARGET_KERNEL_CONFIG := floral_defconfig
+# TARGET_KERNEL_SOURCE := kernel/google/msm-4.14
 TARGET_NEEDS_DTBOIMAGE := true
+BOARD_PREBUILT_DTBIMAGE_DIR := $(TARGET_KERNEL_DIR)
+BOARD_PREBUILT_DTBOIMAGE := $(BOARD_PREBUILT_DTBIMAGE_DIR)/dtbo.img
+TARGET_PREBUILT_KERNEL := $(TARGET_KERNEL_DIR)/Image.lz4
+BOARD_PREBUILT_DTBIMAGE_DIR := $(TARGET_KERNEL_DIR)/dtb
+PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL):kernel
 
 BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200n8 androidboot.console=ttyMSM0 printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237
